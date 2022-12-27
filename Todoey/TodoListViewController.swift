@@ -10,7 +10,7 @@ import UIKit
 
 class TodoListViewController: UITableViewController {
 
-    let itemArray = ["Comprar ações", "Ir na farmácia", "Arrumar choveiro", "Pagar contas", "Ir na farmácia", "Arrumar choveiro", "Pagar contas", "Ir na farmácia", "Arrumar choveiro", "Pagar contas", "Ir na farmácia", "Arrumar choveiro", "Pagar contas", "Ir na farmácia", "Arrumar choveiro", "Pagar contas", "Ir na farmácia", "Arrumar choveiro", "Pagar contas", "Ir na farmácia", "Arrumar choveiro", "Pagar contas", "Ir na farmácia", "Arrumar choveiro", "Pagar contas"]
+    var itemArray = ["Comprar ações", "Ir na farmácia", "Arrumar choveiro"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,6 +40,29 @@ class TodoListViewController: UITableViewController {
         }
     }
     
-    
+    //MARK: - Add new items
+    @IBAction func addButtonPressed(_ sender: UIBarButtonItem) {
+        var textField = UITextField()
+        
+        let alert = UIAlertController(title: "Add New Todoye Item", message: "", preferredStyle: .alert)
+        let action = UIAlertAction(title: "Add Item", style: .default) {
+            (action) in
+            
+            if let safeValue = textField.text {
+                self.itemArray.append(safeValue)
+                self.tableView.reloadData()
+            }
+        }
+        
+        alert.addTextField {
+            (alertTexField) in
+            alertTexField.placeholder = "Add new item"
+            textField = alertTexField
+        }
+        
+        alert.addAction(action)
+        
+        present(alert, animated: true)
+    }
 }
 
