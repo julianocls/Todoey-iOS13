@@ -11,10 +11,14 @@ import UIKit
 class TodoListViewController: UITableViewController {
 
     var itemArray = ["Comprar ações", "Ir na farmácia", "Arrumar choveiro"]
+    let userDefaults = UserDefaults.standard
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
+        if let safeItem = userDefaults.array(forKey: "TodoyeListArray") as? [String] {
+            itemArray = safeItem
+        }
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -51,6 +55,7 @@ class TodoListViewController: UITableViewController {
             if let safeValue = textField.text {
                 self.itemArray.append(safeValue)
                 self.tableView.reloadData()
+                self.userDefaults.set(self.itemArray, forKey: "TodoyeListArray")
             }
         }
         
