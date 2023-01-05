@@ -38,13 +38,14 @@ class TodoListViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        
+       
         itemArray[indexPath.row].check = !itemArray[indexPath.row].check
         
         saveItems()
         
         tableView.deselectRow(at: indexPath, animated: true)
     }
+    
     
     //MARK: - Add new items
     @IBAction func addButtonPressed(_ sender: UIBarButtonItem) {
@@ -75,6 +76,19 @@ class TodoListViewController: UITableViewController {
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
         
         present(alert, animated: true)
+    }
+    
+    //MARK: - Remove selected item    
+    @IBAction func deleteButtonPressed(_ sender: UIBarButtonItem) {
+        
+        itemArray.enumerated().forEach { (index, item) in
+            if item.check {
+                context.delete(item)
+                itemArray.remove(at: index)
+                saveItems()
+            }
+        }
+
     }
     
     //MARK: - Model Manipulation Method
