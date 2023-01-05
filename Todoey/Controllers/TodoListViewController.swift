@@ -80,15 +80,18 @@ class TodoListViewController: UITableViewController {
     
     //MARK: - Remove selected item    
     @IBAction func deleteButtonPressed(_ sender: UIBarButtonItem) {
-        
-        itemArray.enumerated().forEach { (index, item) in
-            if item.check {
-                context.delete(item)
-                itemArray.remove(at: index)
-                saveItems()
+
+        for _ in itemArray {
+            for (index, item) in zip(itemArray.indices, itemArray) {
+                if item.check {
+                    context.delete(item)
+                    itemArray.remove(at: index)
+                    saveItems()
+                    break
+                }
             }
         }
-
+        
     }
     
     //MARK: - Model Manipulation Method
