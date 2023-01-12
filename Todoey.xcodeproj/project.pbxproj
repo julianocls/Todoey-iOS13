@@ -3,12 +3,14 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		61111D532969E6FE00937EFC /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61111D522969E6FE00937EFC /* CategoryViewController.swift */; };
-		616ABEA429614BC400190F7F /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 616ABEA229614BC400190F7F /* DataModel.xcdatamodeld */; };
+		6188E5F2296FA88A00B76AC1 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6188E5F1296FA88A00B76AC1 /* Item.swift */; };
+		6188E5F4296FA8A000B76AC1 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6188E5F3296FA8A000B76AC1 /* Category.swift */; };
+		61B11392296E594600BDD7AD /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 61B11391296E594600BDD7AD /* RealmSwift */; };
 		EB2BE4FA239524DB00FB933B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB2BE4F9239524DB00FB933B /* AppDelegate.swift */; };
 		EB2BE4FE239524DB00FB933B /* TodoListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB2BE4FD239524DB00FB933B /* TodoListViewController.swift */; };
 		EB2BE501239524DB00FB933B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EB2BE4FF239524DB00FB933B /* Main.storyboard */; };
@@ -18,7 +20,8 @@
 
 /* Begin PBXFileReference section */
 		61111D522969E6FE00937EFC /* CategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
-		616ABEA329614BC400190F7F /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
+		6188E5F1296FA88A00B76AC1 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
+		6188E5F3296FA8A000B76AC1 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		EB2BE4F6239524DB00FB933B /* Todoey.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Todoey.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB2BE4F9239524DB00FB933B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EB2BE4FD239524DB00FB933B /* TodoListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoListViewController.swift; sourceTree = "<group>"; };
@@ -33,6 +36,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				61B11392296E594600BDD7AD /* RealmSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -42,7 +46,8 @@
 		618E05CE295E987800D130D2 /* Data Model */ = {
 			isa = PBXGroup;
 			children = (
-				616ABEA229614BC400190F7F /* DataModel.xcdatamodeld */,
+				6188E5F1296FA88A00B76AC1 /* Item.swift */,
+				6188E5F3296FA8A000B76AC1 /* Category.swift */,
 			);
 			path = "Data Model";
 			sourceTree = "<group>";
@@ -118,6 +123,9 @@
 			dependencies = (
 			);
 			name = Todoey;
+			packageProductDependencies = (
+				61B11391296E594600BDD7AD /* RealmSwift */,
+			);
 			productName = Todoey;
 			productReference = EB2BE4F6239524DB00FB933B /* Todoey.app */;
 			productType = "com.apple.product-type.application";
@@ -146,6 +154,9 @@
 				Base,
 			);
 			mainGroup = EB2BE4ED239524DB00FB933B;
+			packageReferences = (
+				61B11390296E594600BDD7AD /* XCRemoteSwiftPackageReference "realm-swift" */,
+			);
 			productRefGroup = EB2BE4F7239524DB00FB933B /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -173,10 +184,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6188E5F2296FA88A00B76AC1 /* Item.swift in Sources */,
 				61111D532969E6FE00937EFC /* CategoryViewController.swift in Sources */,
 				EB2BE4FE239524DB00FB933B /* TodoListViewController.swift in Sources */,
-				616ABEA429614BC400190F7F /* DataModel.xcdatamodeld in Sources */,
 				EB2BE4FA239524DB00FB933B /* AppDelegate.swift in Sources */,
+				6188E5F4296FA8A000B76AC1 /* Category.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -379,19 +391,24 @@
 		};
 /* End XCConfigurationList section */
 
-/* Begin XCVersionGroup section */
-		616ABEA229614BC400190F7F /* DataModel.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				616ABEA329614BC400190F7F /* DataModel.xcdatamodel */,
-			);
-			currentVersion = 616ABEA329614BC400190F7F /* DataModel.xcdatamodel */;
-			name = DataModel.xcdatamodeld;
-			path = ../Controllers/DataModel.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
+/* Begin XCRemoteSwiftPackageReference section */
+		61B11390296E594600BDD7AD /* XCRemoteSwiftPackageReference "realm-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/realm-swift";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
 		};
-/* End XCVersionGroup section */
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		61B11391296E594600BDD7AD /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 61B11390296E594600BDD7AD /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = RealmSwift;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = EB2BE4EE239524DB00FB933B /* Project object */;
 }
