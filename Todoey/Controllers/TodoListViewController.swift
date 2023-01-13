@@ -13,6 +13,7 @@ class TodoListViewController: UITableViewController {
 
     var todoItems: Results<Item>?
     let realm = try! Realm()
+    let NO_ITEMS_ADDED = "No items added yet"
     
     var selectedCategory: Category? {
         didSet {
@@ -36,7 +37,7 @@ class TodoListViewController: UITableViewController {
             cell.textLabel?.text = item.title
             cell.accessoryType = item.done ? .checkmark : .none
         } else {
-            cell.textLabel?.text = "No items added yet"
+            cell.textLabel?.text = NO_ITEMS_ADDED
         }
         
         return cell
@@ -44,16 +45,21 @@ class TodoListViewController: UITableViewController {
     
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        if itemArray?[indexPath.row].title != "No item added yet" {
-//
-//            tableView.deselectRow(at: indexPath, animated: true)
-//
-//            itemArray?[indexPath.row].done = !(itemArray?[indexPath.row].done)!
-//
-//            save(item: (itemArray?[indexPath.row])!)
-//
-//            tableView.deselectRow(at: indexPath, animated: true)
-//        }
+        if let item = todoItems?[indexPath.row] {
+            if item.title != NO_ITEMS_ADDED {
+                tableView.deselectRow(at: indexPath, animated: true)
+                
+                do {
+                    try realm.write {
+                        item.done = !item.done
+                    }
+                } catch {
+                    print("Error on saving context")
+                }
+                
+                self.tableView.reloadData()
+            }
+        }
     }
     
     
