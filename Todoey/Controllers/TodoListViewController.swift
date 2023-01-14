@@ -101,20 +101,25 @@ class TodoListViewController: UITableViewController {
     }
     
     //MARK: - Remove selected item    
-//    @IBAction func deleteButtonPressed(_ sender: UIBarButtonItem) {
-//
-//        for _ in itemArray {
-//            for (index, item) in zip(itemArray.indices, itemArray) {
-//                if item.check {
-//                    context.delete(item)
-//                    itemArray.remove(at: index)
-//                    saveItems()
-//                    break
-//                }
-//            }
-//        }
-//
-//    }
+    @IBAction func deleteButtonPressed(_ sender: UIBarButtonItem) {
+        if let items = todoItems {
+            for _ in items {
+                for item in items {
+                    if item.done {
+                        do {
+                            try realm.write {
+                                realm.delete(item)
+                            }
+                            break
+                        } catch {
+                            print("Error deleting item")
+                        }
+                    }
+                }
+                self.tableView.reloadData()
+            }
+        }
+    }
     
     //MARK: - Model Manipulation Method
     func save(items: List<Item>) {
