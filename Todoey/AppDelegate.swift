@@ -2,8 +2,8 @@
 //  AppDelegate.swift
 //  Destini
 //
-//  Created by Philipp Muellauer on 01/09/2015.
-//  Copyright (c) 2015 London App Brewery. All rights reserved.
+//  Created by Juliano Santos on 7/1/23.
+//  Copyright © 2023 App Brewery. All rights reserved.
 //
 
 import UIKit
@@ -19,7 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
         do {
-            let realm = try Realm()
+            let _ = try Realm()
         } catch {
             print("Error initialising new Realm \(error)")
         }
