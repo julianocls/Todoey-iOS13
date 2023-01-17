@@ -58,6 +58,7 @@ class CategoryViewController: UITableViewController {
                     self.save(category: category)
                 }
             }
+
         }
         
         ac.addTextField {

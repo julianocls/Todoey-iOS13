@@ -87,6 +87,7 @@ class TodoListViewController: UITableViewController {
                     }
                 }
             }
+            
         }
         
         alert.addTextField {
