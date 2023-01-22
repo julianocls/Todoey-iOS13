@@ -13,6 +13,7 @@
 		6188E5F2296FA88A00B76AC1 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6188E5F1296FA88A00B76AC1 /* Item.swift */; };
 		6188E5F4296FA8A000B76AC1 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6188E5F3296FA8A000B76AC1 /* Category.swift */; };
 		61B11392296E594600BDD7AD /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 61B11391296E594600BDD7AD /* RealmSwift */; };
+		61BD3E03297B9A9800B900D0 /* Hue in Frameworks */ = {isa = PBXBuildFile; productRef = 61BD3E02297B9A9800B900D0 /* Hue */; };
 		EB2BE4FA239524DB00FB933B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB2BE4F9239524DB00FB933B /* AppDelegate.swift */; };
 		EB2BE4FE239524DB00FB933B /* TodoListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB2BE4FD239524DB00FB933B /* TodoListViewController.swift */; };
 		EB2BE501239524DB00FB933B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EB2BE4FF239524DB00FB933B /* Main.storyboard */; };
@@ -39,6 +40,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				61BD3E03297B9A9800B900D0 /* Hue in Frameworks */,
 				615D101A29779059008031CF /* SwipeCellKit in Frameworks */,
 				61B11392296E594600BDD7AD /* RealmSwift in Frameworks */,
 			);
@@ -131,6 +133,7 @@
 			packageProductDependencies = (
 				61B11391296E594600BDD7AD /* RealmSwift */,
 				615D101929779059008031CF /* SwipeCellKit */,
+				61BD3E02297B9A9800B900D0 /* Hue */,
 			);
 			productName = Todoey;
 			productReference = EB2BE4F6239524DB00FB933B /* Todoey.app */;
@@ -163,6 +166,7 @@
 			packageReferences = (
 				61B11390296E594600BDD7AD /* XCRemoteSwiftPackageReference "realm-swift" */,
 				615D101829779059008031CF /* XCRemoteSwiftPackageReference "SwipeCellKit" */,
+				61BD3E01297B9A9800B900D0 /* XCRemoteSwiftPackageReference "Hue" */,
 			);
 			productRefGroup = EB2BE4F7239524DB00FB933B /* Products */;
 			projectDirPath = "";
@@ -416,6 +420,14 @@
 				kind = branch;
 			};
 		};
+		61BD3E01297B9A9800B900D0 /* XCRemoteSwiftPackageReference "Hue" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/zenangst/Hue";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -428,6 +440,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 61B11390296E594600BDD7AD /* XCRemoteSwiftPackageReference "realm-swift" */;
 			productName = RealmSwift;
+		};
+		61BD3E02297B9A9800B900D0 /* Hue */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 61BD3E01297B9A9800B900D0 /* XCRemoteSwiftPackageReference "Hue" */;
+			productName = Hue;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
