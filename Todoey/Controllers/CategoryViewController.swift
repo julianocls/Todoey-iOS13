@@ -8,18 +8,32 @@
 
 import UIKit
 import RealmSwift
+import ChameleonFramework
 
 class CategoryViewController: SwipeTableViewController {
     
     var categories: Results<Category>?
     let realm = try! Realm()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         loadCategories()
         
         tableView.rowHeight = 80.0
+        tableView.separatorStyle = .none
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        guard let navBar = navigationController?.navigationBar else {
+            fatalError("Navigation controller does not exists")
+        }
+        
+        let navBarAppearance = UINavigationBarAppearance()
+        navBarAppearance.configureWithTransparentBackground()
+        navBarAppearance.backgroundColor = UIColor(hexString: "1D9BF6")!
+        navBar.standardAppearance = navBarAppearance
+        navBar.scrollEdgeAppearance = navBarAppearance
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -32,7 +46,8 @@ class CategoryViewController: SwipeTableViewController {
         
         let category = categories?[indexPath.row]
         cell.textLabel?.text = category?.name ?? "No Categories added yet"
-        cell.backgroundColor = UIColor(hex: category?.colour ?? "1D9BF6")
+        cell.backgroundColor = UIColor(hexString: category?.colour ?? "1D9BF6")
+        cell.textLabel?.textColor = ContrastColorOf(UIColor(hexString: category?.colour ?? "1D9BF6")!, returnFlat: true)
         
         return cell
     }
@@ -60,7 +75,7 @@ class CategoryViewController: SwipeTableViewController {
                 let category = Category()
                 if !safeText.isEmpty {
                     category.name = safeText
-                    category.colour = UIColor.blue.hex()
+                    category.colour = UIColor.randomFlat().hexValue()
                     self.save(category: category)
                 }
             }

@@ -42,19 +42,20 @@
                     <navigationItem key="navigationItem" title="Items" id="fLS-w8-ojx">
                         <rightBarButtonItems>
                             <barButtonItem systemItem="add" id="Ein-Ht-Kha">
-                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
                                     <action selector="addButtonPressed:" destination="wHW-kt-R8C" id="mUe-6B-vaW"/>
                                 </connections>
                             </barButtonItem>
                             <barButtonItem systemItem="trash" id="bgl-vY-hwQ">
-                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
                                     <action selector="deleteButtonPressed:" destination="wHW-kt-R8C" id="oeX-rF-b8D"/>
                                 </connections>
                             </barButtonItem>
                         </rightBarButtonItems>
                     </navigationItem>
+                    <connections>
+                        <outlet property="searchBar" destination="wjb-g2-JHi" id="1H2-YF-HfU"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7gH-hg-J4H" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -65,15 +66,19 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="I7o-SH-LQz" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="ydR-gS-YaA">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="ydR-gS-YaA">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" systemColor="systemBlueColor"/>
                         <color key="barTintColor" systemColor="systemBlueColor"/>
                         <textAttributes key="titleTextAttributes">
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Yoa-76-E11">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
                     <connections>
                         <segue destination="ACE-Rb-MGk" kind="relationship" relationship="rootViewController" id="ZAp-kJ-Gye"/>
                     </connections>
